@@ -1,0 +1,16 @@
+
+server:
+  port: 8000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route1
+          uri: http://localhost:8000/hello
+          predicates:
+            - Path=http://localhost:8000/hello
+          filters:
+            - name: RequestRateLimiter
+#              args:
+#                key-resolver: "${customKeyResolver}"
